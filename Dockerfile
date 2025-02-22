@@ -5,3 +5,6 @@ ADD         static/ /usr/share/nginx/html/static/
 ADD         asset-manifest.json index.html robots.txt /usr/share/nginx/html/
 USER nginx
 CMD ["nginx", "-g", "daemon off;"]
+
+
+
