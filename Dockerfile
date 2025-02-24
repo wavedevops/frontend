@@ -1,9 +1,21 @@
-FROM        nginx
-RUN         rm -rf /usr/share/nginx/html/* /etc/nginx/conf.d/*
-ADD         expense.conf /etc/nginx/conf.d/expense.conf
-ADD         static/ /usr/share/nginx/html/static/
-ADD         asset-manifest.json index.html robots.txt /usr/share/nginx/html/
+FROM nginx:latest
+
+# Remove default content
+RUN rm -rf /usr/share/nginx/html/* /etc/nginx/conf.d/*
+
+# Copy configuration file
+COPY expense.conf /etc/nginx/conf.d/expense.conf
+
+# Copy static files
+COPY static/ /usr/share/nginx/html/static/
+
+# Copy other necessary files
+COPY asset-manifest.json index.html robots.txt /usr/share/nginx/html/
+
+# Use non-root user for security
 USER nginx
+
+# Start Nginx in the foreground
 CMD ["nginx", "-g", "daemon off;"]
 
 
