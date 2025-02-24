@@ -12,11 +12,11 @@ COPY static/ /usr/share/nginx/html/static/
 # Copy other necessary files
 COPY asset-manifest.json index.html robots.txt /usr/share/nginx/html/
 
+# Ensure proper permissions for cache directories
+RUN mkdir -p /var/cache/nginx && chown -R nginx:nginx /var/cache/nginx
+
 # Use non-root user for security
 USER nginx
 
 # Start Nginx in the foreground
 CMD ["nginx", "-g", "daemon off;"]
-
-
-
