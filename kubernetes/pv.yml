@@ -13,3 +13,12 @@ spec:
   storageClassName: local-storage
   local:
     path: /tmp/myvolume/
+  ####
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - main
