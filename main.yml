@@ -43,6 +43,8 @@ kind: Pod
 metadata:
   name: nginx-pod
   namespace: expense
+  labels:
+    app.kubernetes.io/name: nginx
 spec:
   containers:
     - name: nginx
@@ -64,11 +66,13 @@ metadata:
   name: expense-service
   namespace: expense
 spec:
+  selector:
+    app.kubernetes.io/name: nginx
   ports:
     - port: 8080 # kubernetes internal communication port (ingress)
       protocol: TCP
       targetPort: 81  # app port
-  type: ClusterIP
+  type: LoadBalancer
 
 ---
 apiVersion: networking.k8s.io/v1
