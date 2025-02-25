@@ -11,7 +11,7 @@ COPY static/ /usr/share/nginx/html/static/
 COPY asset-manifest.json index.html robots.txt /usr/share/nginx/html/
 
 # Expose port 80
-EXPOSE 80
+EXPOSE 8080
 
 # Start Nginx
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
