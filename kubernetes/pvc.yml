@@ -11,24 +11,3 @@ spec:
       storage: 1Gi
   storageClassName: local-storage
 
----
-apiVersion: v1
-kind: Pod
-metadata:
-  name: nginx-pod
-  namespace: expense
-spec:
-  containers:
-    - name: nginx
-      image: chandrahari296/frontend:v2.0.0
-      ports:
-        - containerPort: 80
-      volumeMounts:
-        - mountPath: "/usr/share/nginx/html"
-          name: nginx-volume
-  
-  volumes:
-    - name: nginx-volume
-      persistentVolumeClaim:
-        claimName: nginx-pvc
-

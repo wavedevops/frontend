@@ -4,9 +4,8 @@ metadata:
   name: expense-service
   namespace: expense
 spec:
-  externalName: 192.168.9.254
   ports:
     - port: 8080 # kubernetes internal communication port (ingress)
       protocol: TCP
       targetPort: 81  # app port
-  type: ExternalName
+  type: Loadbalancer
