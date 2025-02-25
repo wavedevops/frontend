@@ -68,7 +68,7 @@ spec:
     - port: 8080 # kubernetes internal communication port (ingress)
       protocol: TCP
       targetPort: 81  # app port
-  type: LoadBalancer
+  type: ClusterIP
 
 ---
 apiVersion: networking.k8s.io/v1
