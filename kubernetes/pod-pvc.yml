@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: example-pod
-  namespace: expanse
+  namespace: expense
 spec:
   containers:
     - name: example-container

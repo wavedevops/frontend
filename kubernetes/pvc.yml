@@ -2,7 +2,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: example-pvc
-  namespace: expanse
+  namespace: expense
 spec:
   accessModes:
     - ReadWriteOnce
