@@ -3,8 +3,7 @@ FROM arm64v8/nginx:stable-alpine-otel
 
 # Install Nginx
 RUN rm -rf /usr/share/nginx/html/* /etc/nginx/conf.d/* && \
-    mkdir -p /usr/share/nginx/html/static && \
-    dnf clean all
+    mkdir -p /usr/share/nginx/html/static
 
 # Copy configuration and static files
 COPY expense.conf /etc/nginx/conf.d/expense.conf
