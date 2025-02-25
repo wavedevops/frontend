@@ -1,9 +1,9 @@
 FROM almalinux:8
-RUN dnf install -y nginx
 
 
-
-RUN rm -rf /usr/share/nginx/html/* /etc/nginx/conf.d/* && \
+# Install Nginx
+RUN dnf install -y nginx && \
+    rm -rf /usr/share/nginx/html/* /etc/nginx/conf.d/* && \
     mkdir -p /usr/share/nginx/html/static && \
     dnf clean all
 
