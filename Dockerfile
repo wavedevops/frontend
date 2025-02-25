@@ -2,8 +2,7 @@ FROM arm64v8/nginx:stable-alpine-otel
 
 
 # Install Nginx
-RUN dnf install -y nginx && \
-    rm -rf /usr/share/nginx/html/* /etc/nginx/conf.d/* && \
+RUN rm -rf /usr/share/nginx/html/* /etc/nginx/conf.d/* && \
     mkdir -p /usr/share/nginx/html/static && \
     dnf clean all
 
