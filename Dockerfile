@@ -13,7 +13,7 @@ COPY static/ /usr/share/nginx/html/static/
 COPY asset-manifest.json index.html robots.txt /usr/share/nginx/html/
 
 # Start Nginx in the foreground
-CMD ["nginx", "-g", "daemon off;"]
+ENTRYPOINT ["nginx", "-g", "daemon off;"]
 
 
 
