@@ -1,4 +1,4 @@
-FROM almalinux:8
+FROM arm64v8/nginx:stable-alpine-otel
 
 
 # Install Nginx
