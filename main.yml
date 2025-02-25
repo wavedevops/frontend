@@ -51,13 +51,13 @@ spec:
       image: chandrahari296/frontend:v2.0.0
       ports:
         - containerPort: 81
-#      volumeMounts:
-#        - mountPath: "/usr/share/nginx/html"
-#          name: nginx-volume
-#  volumes:
-#    - name: nginx-volume
-#      persistentVolumeClaim:
-#        claimName: nginx-pvc
+      volumeMounts:
+        - mountPath: "/usr/share/nginx/html"
+          name: nginx-volume
+  volumes:
+    - name: nginx-volume
+      persistentVolumeClaim:
+        claimName: nginx-pvc
 
 ---
 apiVersion: v1
