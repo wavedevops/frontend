@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  generation: 2
+  name: expense-app-ingress
+  namespace: expense
+spec:
+  ingressClassName: public
+  rules:
+    - host: expense.durgasri.com
+      http:
+        paths:
+          - backend:
+              service:
+                name: expense-service
+                port:
+                  number: 8080
+            path: /
+            pathType: Prefix

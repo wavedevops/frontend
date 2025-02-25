@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: expense-service
+  namespace: expense
+spec:
+  externalName: 192.168.9.254
+  ports:
+    - port: 8080
+      protocol: TCP
+      targetPort: 8080
+  type: ExternalName
