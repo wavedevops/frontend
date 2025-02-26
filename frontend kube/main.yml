@@ -3,7 +3,7 @@ kind: PersistentVolume
 metadata:
   name: nginx-pv
   labels:
-    app.kubernetes.io/name: nginx
+    name: nginx
   namespace: expense
 spec:
   capacity:
@@ -31,7 +31,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: nginx-pvc
   labels:
-    app.kubernetes.io/name: nginx
+    name: nginx
   namespace: expense
 spec:
   accessModes:
@@ -48,7 +48,7 @@ metadata:
   name: nginx-pod
   namespace: expense
   labels:
-    app.kubernetes.io/name: nginx
+    name: nginx
 spec:
   containers:
     - name: nginx
@@ -69,10 +69,10 @@ metadata:
   name: expense-service
   namespace: expense
   labels:
-    app.kubernetes.io/name: nginx
+    nginx: nginx
 spec:
   selector:
-    app.kubernetes.io/name: nginx
+    name: nginx
   ports:
     - port: 8080 # kubernetes internal communication port (ingress)
       protocol: TCP
