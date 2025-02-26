@@ -56,7 +56,7 @@ spec:
       ports:
         - containerPort: 81
       volumeMounts:
-        - mountPath: "/usr/share/nginx/html/index.html"
+        - mountPath: "/usr/share/nginx/html"
           name: nginx-volume
   volumes:
     - name: nginx-volume
