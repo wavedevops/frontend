@@ -1,0 +1,8 @@
+replicaCount: 0
+name:
+  app: frontend
+image:
+  repository: frontend
+  tag: v2.0.0
+service:
+  port: 80
