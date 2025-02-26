@@ -1,8 +1,9 @@
+#pv
 apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: nginx-pv
-  namespace: expanse
+  namespace: expense
 spec:
   capacity:
     storage: 1Gi
@@ -22,3 +23,17 @@ spec:
               operator: In
               values:
                 - main
+---
+# pvc
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: nginx-pvc
+  namespace: expense
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: local-storage

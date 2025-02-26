@@ -4,8 +4,10 @@ metadata:
   name: expense-service
   namespace: expense
 spec:
+  selector:
+    app.kubernetes.io/name: nginx
   ports:
     - port: 8080 # kubernetes internal communication port (ingress)
       protocol: TCP
       targetPort: 81  # app port
-  type: Loadbalancer
+  type: LoadBalancer

@@ -18,18 +18,3 @@ spec:
     - name: nginx-volume
       persistentVolumeClaim:
         claimName: nginx-pvc
-
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: expense-service
-  namespace: expense
-spec:
-  selector:
-    app.kubernetes.io/name: nginx
-  ports:
-    - port: 8080 # kubernetes internal communication port (ingress)
-      protocol: TCP
-      targetPort: 81  # app port
-  type: LoadBalancer
