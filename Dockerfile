@@ -21,7 +21,7 @@
 FROM quay.io/centos/centos:stream8
 
 # Install Nginx and clean up cache
-RUN dnf install -y nginx && dnf clean all && rm -rf /var/cache/dnf
+RUN dnf install -y nginx
 
 # Remove default HTML content
 RUN rm -rf /usr/share/nginx/html/*
