@@ -41,8 +41,10 @@ pipeline {
 
     post {
         always {
+            // Clean up the workspace using 'sh' command
+            sh 'rm -rf /home/ec2-user/*'  // Ensure to clean up any leftover files in the specific directory
             echo "Cleaning up workspace..."
-            deleteDir()  // Deletes the workspace after job runs
+            deleteDir()  // Deletes the Jenkins workspace after the job runs
         }
     }
 }
