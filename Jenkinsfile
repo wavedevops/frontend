@@ -39,6 +39,7 @@ pipeline {
 //                 sh """
 //                     curl -sSf -H "X-JFrog-Art-Api: cmVmdGtuOjAxOjE3NzUyMjkyODk6RDl0V01hY3ozSEdSVUkyZU5OOXhLUFAwbEV5" \\
 //                          -X PUT -T frontend-${TAG_NAME}.zip "https://jfrog.chaitu.net/artifactory/frontend/frontend-${TAG_NAME}.zip"
+// curl -sSf -H 'X-JFrog-Art-Api: cmVmdGtuOjAxOjE3NzUyMjkyODk6RDl0V01hY3ozSEdSVUkyZU5OOXhLUFAwbEV5' -X PUT -T frontend-v2.0.0.zip https://jfrog.chaitu.net/artifactory/frontend/frontend-v2.0.0.zip
 //                 """
             }
         }
