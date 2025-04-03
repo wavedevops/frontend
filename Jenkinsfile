@@ -43,6 +43,5 @@ pipeline {
 //                 sh 'docker push 739561048503.dkr.ecr.us-east-1.amazonaws.com/frontend:${TAG_NAME}'
             }
         }
-
     }
 }
