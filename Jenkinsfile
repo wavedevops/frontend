@@ -1,8 +1,11 @@
 pipeline {
     agent { label 'workstation' }
 
-    stages {
+    environment {
+        JFROG_API_KEY = credentials('cmVmdGtuOjAxOjE3NzUyMjkyODk6RDl0V01hY3ozSEdSVUkyZU5OOXhLUFAwbEV5')  // Fetch API key securely
+    }
 
+    stages {
         stage('Code Quality') {
             when {
                 allOf {
@@ -10,7 +13,7 @@ pipeline {
                 }
             }
             steps {
-                echo 'OK'
+                echo 'Code Quality Check: OK'
             }
         }
 
@@ -22,7 +25,7 @@ pipeline {
                 }
             }
             steps {
-                echo 'CI'
+                echo 'Running Unit Tests: CI'
             }
         }
 
@@ -31,9 +34,15 @@ pipeline {
                 expression { env.TAG_NAME ==~ ".*" }
             }
             steps {
+                script {
+                    if (!env.TAG_NAME) {
+                        error "❌ TAG_NAME is not set. Ensure you're running this as a tagged build."
+                    }
+                }
+                sh 'rm -f frontend-${TAG_NAME}.zip'
                 sh 'zip -r frontend-${TAG_NAME}.zip *'
                 sh """
-                    curl -sSf -u admin:@123Chaitu -X PUT -T frontend-${TAG_NAME}.zip "https://jfrog.chaitu.net/artifactory/frontend/frontend-${TAG_NAME}.zip"
+                    curl -sSf -H "X-JFrog-Art-Api: ${JFROG_API_KEY}" -X PUT -T frontend-${TAG_NAME}.zip "https://jfrog.chaitu.net/artifactory/frontend/frontend-${TAG_NAME}.zip"
                 """
             }
         }
@@ -41,9 +50,8 @@ pipeline {
 
     post {
         always {
-            echo "Cleaning up workspace..."
+            echo "🧹 Cleaning up workspace..."
             deleteDir()  // Deletes the workspace after job runs
         }
     }
 }
-
