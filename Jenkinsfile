@@ -36,7 +36,7 @@ pipeline {
             steps {
                 sh 'zip -r frontend-${TAG_NAME}.zip *'
                 sh 'curl -sSf -u "admin:"{{ lookup('aws_ssm', 'jenkins_password', region='us-east-1' ) }}"" -X PUT -T frontend-${TAG_NAME}.zip "https://jfrog.chaitu.net/artifactory/frontend/frontend-${TAG_NAME}.zip"'
-            }
+                }
             steps {
 //                 sh 'docker build -t 739561048503.dkr.ecr.us-east-1.amazonaws.com/frontend:${TAG_NAME} .'
 //                 sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 739561048503.dkr.ecr.us-east-1.amazonaws.com'
