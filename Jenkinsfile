@@ -34,6 +34,7 @@ pipeline {
                 sh 'zip -r frontend-${TAG_NAME}.zip *'
                 sh """
                     curl -sSf -u admin:@123Chaitu -X PUT -T frontend-${TAG_NAME}.zip "https://jfrog.chaitu.net/artifactory/frontend/frontend-${TAG_NAME}.zip"
+//                     curl -sSf -u admin:@123Chaitu -X PUT -T frontend-${TAG_NAME}.zip "https://jfrog.chaitu.net/artifactory/frontend/frontend-${TAG_NAME}.zip"
                 """
             }
         }
@@ -46,3 +47,4 @@ pipeline {
         }
     }
 }
+
