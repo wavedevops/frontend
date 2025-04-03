@@ -35,18 +35,14 @@ pipeline {
                 sh """
                     curl -sSf -u admin:${JENKINS_PASSWORD} -X PUT -T frontend-${TAG_NAME}.zip "https://jfrog.chaitu.net/artifactory/frontend/frontend-${TAG_NAME}.zip"
                 """
-
-                // Docker Build & Push
-                // sh 'docker build -t 739561048503.dkr.ecr.us-east-1.amazonaws.com/frontend:${TAG_NAME} .'
-                // sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 739561048503.dkr.ecr.us-east-1.amazonaws.com'
-                // sh 'docker push 739561048503.dkr.ecr.us-east-1.amazonaws.com/frontend:${TAG_NAME}'
             }
         }
-        post {
-            always {
-                echo "Cleaning up workspace..."
-                deleteDir()  // Deletes the workspace after job runs
-            }
+    }
+
+    post {
+        always {
+            echo "Cleaning up workspace..."
+            deleteDir()  // Deletes the workspace after job runs
         }
     }
 }
